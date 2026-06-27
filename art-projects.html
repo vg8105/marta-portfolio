@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Marta's Portfolio</title>
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./css/design-tokens.css">
+        <link rel="stylesheet" href="./css/style.css">
+    </head>
+
+    <body class="art-page">
+        <header class="site-header position-fixed w-100 dark" id="siteHeader">
+            <nav class="nav-bar" aria-label="Main navigation">
+                <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navList" aria-label="Open menu">
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                </button>
+                <ul class="nav-list" id="navList">
+                    <li><a class="nav-link label-lg" data-section="home" href="./index.html#home"><span class="nav-bullet" aria-hidden="true"></span>HOME</a></li>
+                    <li><a class="nav-link label-lg active" data-section="projects" href="./index.html#cosmos" aria-current="page"><span class="nav-bullet" aria-hidden="true"></span>PROJECTS</a></li>
+                    <li><a class="nav-link label-lg" data-section="about" href="./index.html#about"><span class="nav-bullet" aria-hidden="true"></span>ABOUT</a></li>
+                    <li><a class="nav-link label-lg" data-section="contacts" href="./index.html#contacts"><span class="nav-bullet" aria-hidden="true"></span>CONTACTS</a></li>
+                </ul>
+            </nav>
+        </header>
+        <button class="nav-scrim" id="navScrim" type="button" aria-label="Close menu" tabindex="-1"></button>
+
+        <!-- DIGITAL DRAWING PROJECT LIST -->
+        <main class="art-section">
+            <div class="art-section-inner d-flex flex-column align-items-center mx-auto">
+
+                <div class="art-top d-flex flex-column align-items-end w-100">
+                    <a href="./index.html#cosmos" class="back-link d-flex align-items-center text-decoration-none">
+                        <span class="label-md">BACK TO SPACE</span>
+                        <span class="back-icon d-flex align-items-center justify-content-center">&times;</span>
+                    </a>
+                    <div class="art-heading d-flex flex-column align-items-start w-100">
+                        <p class="label-lg eyebrow">PLANET 1 &mdash; PAINTING &amp; ILLUSTRATION</p>
+                        <h3 class="art-title">Digital Drawing</h3>
+                        <p class="text-lg art-intro">Click on a project to explore more about it.</p>
+                        <div class="art-divider w-100"></div>
+                    </div>
+                </div>
+
+                <div class="project-list d-flex flex-column align-items-start w-100">
+
+                    <!-- PROJECT 1 -->
+                    <a href="./art-yohoshiro.html" class="project-preview d-flex flex-column align-items-start w-100 text-decoration-none">
+                        <div class="project-image project-image--placeholder w-100" role="img" aria-label="Yohoshiro illustration placeholder — final artwork pending export from Figma">
+                            <span class="label-sm">IMAGE PENDING</span>
+                        </div>
+                        <div class="project-description d-flex flex-column align-items-start w-100">
+                            <p class="label-md project-number">PROJECT 1</p>
+                            <h4 class="project-title">Yohoshiro</h4>
+                            <p class="project-desc">Published illustration on an article from the Portuguese newspaper &ldquo;Mensagem de Lisboa&rdquo;.</p>
+                        </div>
+                        <div class="project-tags d-flex">
+                            <span class="tag label-sm">PUBLICATION</span>
+                        </div>
+                        <span class="view-project d-flex align-items-center label-lg">VIEW PROJECT <span aria-hidden="true">&rarr;</span></span>
+                    </a>
+
+                    <!-- PROJECT 2 -->
+                    <a href="./art-bougainvilleas.html" class="project-preview d-flex flex-column align-items-start w-100 text-decoration-none">
+                        <div class="project-image project-image--placeholder w-100" role="img" aria-label="Bougainvilleas illustration placeholder — final artwork pending export from Figma">
+                            <span class="label-sm">IMAGE PENDING</span>
+                        </div>
+                        <div class="project-description d-flex flex-column align-items-start w-100">
+                            <p class="label-md project-number">PROJECT 2</p>
+                            <h4 class="project-title">Bougainvilleas</h4>
+                            <p class="project-desc">Illustration made based on an article from the Portuguese newspaper &ldquo;Mensagem de Lisboa&rdquo;.</p>
+                        </div>
+                        <div class="project-tags d-flex">
+                            <span class="tag label-sm">NEWSARTICLE</span>
+                            <span class="tag label-sm">INTERPRETATION</span>
+                        </div>
+                        <span class="view-project d-flex align-items-center label-lg">VIEW PROJECT <span aria-hidden="true">&rarr;</span></span>
+                    </a>
+
+                    <!-- PROJECT 3 -->
+                    <a href="./art-5-styles.html" class="project-preview d-flex flex-column align-items-start w-100 text-decoration-none">
+                        <div class="project-image project-image--placeholder w-100" role="img" aria-label="5 Styles illustration placeholder — final artwork pending export from Figma">
+                            <span class="label-sm">IMAGE PENDING</span>
+                        </div>
+                        <div class="project-description d-flex flex-column align-items-start w-100">
+                            <p class="label-md project-number">PROJECT 3</p>
+                            <h4 class="project-title">5 Styles</h4>
+                            <p class="project-desc">Interpretation of a reference drawing in 5 different styles.</p>
+                        </div>
+                        <div class="project-tags d-flex">
+                            <span class="tag label-sm">5 STYLES</span>
+                            <span class="tag label-sm">ADAPTABILITY</span>
+                        </div>
+                        <span class="view-project d-flex align-items-center label-lg">VIEW PROJECT <span aria-hidden="true">&rarr;</span></span>
+                    </a>
+
+                </div>
+            </div>
+        </main>
+
+        <script src="./js/nav-offset.js"></script>
+    </body>
+</html>

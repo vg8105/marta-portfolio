@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bougainvilleas — Marta's Portfolio</title>
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./css/design-tokens.css">
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="./css/project-detail.css">
+    </head>
+
+    <body class="art-page project-page">
+        <header class="site-header position-fixed w-100 dark" id="siteHeader">
+            <nav class="nav-bar" aria-label="Main navigation">
+                <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navList" aria-label="Open menu">
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                </button>
+                <ul class="nav-list" id="navList">
+                    <li><a class="nav-link label-lg" data-section="home" href="./index.html#home"><span class="nav-bullet" aria-hidden="true"></span>HOME</a></li>
+                    <li><a class="nav-link label-lg active" data-section="projects" href="./index.html#cosmos" aria-current="page"><span class="nav-bullet" aria-hidden="true"></span>PROJECTS</a></li>
+                    <li><a class="nav-link label-lg" data-section="about" href="./index.html#about"><span class="nav-bullet" aria-hidden="true"></span>ABOUT</a></li>
+                    <li><a class="nav-link label-lg" data-section="contacts" href="./index.html#contacts"><span class="nav-bullet" aria-hidden="true"></span>CONTACTS</a></li>
+                </ul>
+            </nav>
+        </header>
+        <button class="nav-scrim" id="navScrim" type="button" aria-label="Close menu" tabindex="-1"></button>
+
+        <main class="project-main">
+            <div class="project-content">
+
+                <a href="./art-projects.html" class="project-back label-md">
+                    <span>BACK TO PROJECTS</span>
+                    <span class="project-back-icon" aria-hidden="true">&times;</span>
+                </a>
+
+                <div class="project-body">
+
+                    <div class="project-hero reveal">
+                        <p class="label-lg project-number">PROJECT 2</p>
+
+                        <div class="project-hero-image" role="img" aria-label="Bougainvilleas illustration — image pending export from Figma">
+                            <span class="label-sm">IMAGE PENDING</span>
+                        </div>
+
+                        <div class="project-title-block">
+                            <h1 class="project-title">Bougainvilleas</h1>
+                            <div class="project-divider"></div>
+                            <div class="project-metadata">
+                                <div>
+                                    <span class="label-md project-meta-key">TYPE OF WORK</span>
+                                    <span class="text-sm project-meta-value">Digital Illustration</span>
+                                </div>
+                                <div>
+                                    <span class="label-md project-meta-key">YEAR</span>
+                                    <span class="text-sm project-meta-value">2025</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-section reveal">
+                        <p class="label-md project-section-label">STATEMENT</p>
+                        <p class="text-md project-section-body">An illustration responding to a Mensagem de Lisboa article about neighbors in Lisbon who began planting bougainvilleas in the street, and, in doing so, started talking to each other. What began with one architect and a single flower grew into a shared act — the kind that turns a street into a community.</p>
+                        <p class="text-md project-section-body">The piece captures that spirit as a meeting in the night: two people on opposite sides of a balcony, reaching toward each other through the glow of a flower. The balcony as the threshold between private and shared life. The gesture as the article's quiet argument: that a city becomes a neighborhood the moment someone leans over the railing.</p>
+                    </div>
+
+                    <div class="project-section reveal">
+                        <p class="label-md project-section-label">PROCESS</p>
+                        <div class="project-carousel" data-carousel>
+                            <div class="project-carousel-track">
+                                <div class="project-carousel-slide is-active">
+                                    <div class="project-hero-image" role="img" aria-label="Sketch — pending image"><span class="label-sm">1 SKETCH — PENDING</span></div>
+                                </div>
+                                <div class="project-carousel-slide">
+                                    <div class="project-hero-image" role="img" aria-label="Final sketch — pending image"><span class="label-sm">2 FINAL SKETCH — PENDING</span></div>
+                                </div>
+                                <div class="project-carousel-slide">
+                                    <div class="project-hero-image" role="img" aria-label="Base colour — pending image"><span class="label-sm">3 BASE COLOUR — PENDING</span></div>
+                                </div>
+                                <div class="project-carousel-slide">
+                                    <div class="project-hero-image" role="img" aria-label="Shadow pass — pending image"><span class="label-sm">4 SHADOW — PENDING</span></div>
+                                </div>
+                                <div class="project-carousel-slide">
+                                    <div class="project-hero-image" role="img" aria-label="Final illustration — pending image"><span class="label-sm">5 FINAL — PENDING</span></div>
+                                </div>
+                            </div>
+                            <div class="project-carousel-dots" role="tablist" aria-label="Process stage">
+                                <button class="project-carousel-dot is-active" type="button" aria-current="true"><span>1</span></button>
+                                <button class="project-carousel-dot" type="button" aria-current="false"><span>2</span></button>
+                                <button class="project-carousel-dot" type="button" aria-current="false"><span>3</span></button>
+                                <button class="project-carousel-dot" type="button" aria-current="false"><span>4</span></button>
+                                <button class="project-carousel-dot" type="button" aria-current="false"><span>5</span></button>
+                            </div>
+                        </div>
+                        <div class="project-divider project-figure--spaced"></div>
+                    </div>
+
+                    <nav class="project-pagination reveal" aria-label="Project navigation">
+                        <a href="./art-yohoshiro.html" class="project-pagination-link label-sm">
+                            <span class="project-pagination-arrow" aria-hidden="true">&rarr;</span> PREVIOUS
+                        </a>
+                        <a href="./art-5-styles.html" class="project-pagination-link project-pagination-link--next label-sm">
+                            NEXT <span class="project-pagination-arrow" aria-hidden="true">&rarr;</span>
+                        </a>
+                    </nav>
+
+                </div>
+            </div>
+        </main>
+
+        <script src="./js/nav-offset.js"></script>
+        <script src="./js/project-detail.js"></script>
+    </body>
+</html>

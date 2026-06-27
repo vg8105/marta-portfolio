@@ -1,0 +1,526 @@
+/* =============================================================================
+   PROJECT DETAIL PAGES
+   Shared by all 6 case-study pages (3 web, 3 illustration). Source content:
+   Figma "Projeto final — Current" — frames 703:4136, 4036:3111, 4059:4236
+   (web projects) and 456:2670, 456:3403, 456:3854 (illustration projects).
+   Consumes design-tokens.css exclusively — no raw values below.
+============================================================================= */
+
+.project-page {
+    background: var(--color-surface-dark-3);
+    min-height: 100vh;
+}
+
+.project-main {
+    padding: calc(var(--nav-h) + var(--space-6)) var(--space-4) var(--space-8);
+    display: flex;
+    justify-content: center;
+}
+
+.project-content {
+    width: 100%;
+    max-width: 343px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--space-6);
+}
+
+.project-back {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    min-height: 44px;
+    min-width: 44px;
+    padding: var(--space-2);
+    color: var(--color-text-on-dark-muted);
+    transition: color var(--duration-fast) ease;
+}
+
+.project-back:hover,
+.project-back:focus-visible {
+    color: var(--color-text-on-dark);
+}
+
+.project-back:focus-visible {
+    outline: var(--border-focus);
+    outline-offset: 4px;
+}
+
+.project-back-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: var(--radius-circle);
+    border: 1px solid currentColor;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.project-body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-7);
+}
+
+.project-number {
+    color: var(--color-text-on-dark-faint);
+}
+
+.project-hero {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+}
+
+.project-hero-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    background: var(--color-surface-dark-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.project-hero-image--device {
+    aspect-ratio: 343 / 343;
+    background: var(--color-surface-dark-2);
+    padding: var(--space-6);
+}
+
+.project-hero-image--device img {
+    width: auto;
+    height: 100%;
+    object-fit: contain;
+}
+
+.project-hero-image--tall {
+    aspect-ratio: 343 / 718;
+}
+
+.project-title-block {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.project-title {
+    color: var(--color-surface-light-2);
+}
+
+.project-subtitle {
+    color: var(--color-text-on-dark-muted);
+}
+
+.project-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--color-text-on-dark-muted);
+    opacity: 0.3;
+}
+
+.project-metadata {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-5) var(--space-6);
+}
+
+.project-meta-key {
+    color: var(--color-accent-gold-dim);
+    margin-bottom: var(--space-2);
+    display: block;
+}
+
+.project-meta-value {
+    color: var(--color-text-on-dark);
+}
+
+.project-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.project-section-label {
+    color: var(--color-accent-gold-dim);
+}
+
+.project-section-body {
+    color: var(--color-text-on-dark);
+}
+
+.project-section-body p + p {
+    margin-top: var(--space-4);
+}
+
+.project-pullquote {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-style: italic;
+    font-size: var(--text-h5);
+    line-height: 1.15;
+    color: var(--color-text-on-dark);
+}
+
+.project-pullquote em {
+    font-style: italic;
+}
+
+.project-figure {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.project-figure img {
+    width: 100%;
+    border-radius: var(--radius-sm);
+    display: block;
+    object-fit: cover;
+}
+
+.project-figure-cap {
+    color: var(--color-text-on-dark-muted);
+    font-style: italic;
+}
+
+.project-figure-pair {
+    width: 100%;
+    display: flex;
+    gap: var(--space-3);
+}
+
+.project-figure-pair img {
+    width: 50%;
+    aspect-ratio: 166 / 396;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+}
+
+.project-process-steps {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.project-process-steps li {
+    color: var(--color-text-on-dark);
+}
+
+.project-process-steps a {
+    color: var(--color-accent-purple-glow);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.project-process-steps a:hover,
+.project-process-steps a:focus-visible {
+    color: var(--color-accent-gold-hover);
+}
+
+.project-carousel {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.project-carousel-track {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    position: relative;
+    background: var(--color-surface-dark-2);
+}
+
+.project-carousel-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity var(--duration-standard) var(--ease-standard);
+}
+
+.project-carousel-slide.is-active {
+    opacity: 1;
+}
+
+.project-carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.project-carousel-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+}
+
+.project-carousel-dot {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--color-text-on-dark-muted);
+    transition: color var(--duration-fast) ease;
+}
+
+.project-carousel-dot span {
+    width: 30px;
+    height: 30px;
+    border-radius: var(--radius-circle);
+    border: 1px solid currentColor;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-caption);
+}
+
+.project-carousel-dot.is-active {
+    color: var(--color-accent-gold);
+}
+
+.project-carousel-dot:focus-visible {
+    outline: var(--border-focus);
+    outline-offset: 2px;
+}
+
+.project-final-design {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+}
+
+.project-final-link {
+    font-family: var(--font-serif);
+    font-size: var(--text-h6);
+    color: var(--color-text-on-dark-muted);
+}
+
+.project-final-link a {
+    color: var(--color-accent-purple-glow);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.project-final-link a:hover,
+.project-final-link a:focus-visible {
+    color: var(--color-accent-gold-hover);
+}
+
+.project-link {
+    color: var(--color-accent-purple-glow);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.project-link:hover,
+.project-link:focus-visible {
+    color: var(--color-accent-gold-hover);
+}
+
+.project-outcome {
+    width: 100%;
+    padding: var(--space-4);
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(244, 231, 196, 0.5);
+    background: linear-gradient(to bottom, rgba(231, 211, 161, 0.1), rgba(0, 0, 0, 0));
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.project-outcome-label {
+    color: var(--color-accent-gold-dim);
+}
+
+.project-outcome-body {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-style: italic;
+    font-size: var(--text-h6);
+    line-height: 1.4;
+    color: var(--color-surface-light);
+}
+
+.project-reflection {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+}
+
+.project-pagination {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.project-pagination-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    min-height: 44px;
+    min-width: 44px;
+    padding: var(--space-2);
+    color: var(--color-accent-gold-dim);
+    transition: color var(--duration-fast) ease;
+}
+
+.project-pagination-link:hover,
+.project-pagination-link:focus-visible {
+    color: var(--color-accent-gold);
+}
+
+.project-pagination-link:focus-visible {
+    outline: var(--border-focus);
+    outline-offset: 4px;
+}
+
+.project-pagination-link--next {
+    color: var(--color-accent-gold);
+}
+
+.project-pagination-arrow {
+    display: inline-flex;
+}
+
+.project-pagination-link--prev .project-pagination-arrow {
+    transform: rotate(180deg);
+}
+
+.project-pagination-link[aria-disabled="true"] {
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+.project-figure--spaced {
+    margin-top: var(--space-4);
+}
+
+
+/* =============================================================================
+   SCROLL REVEAL — smoother, more harmonious transitions between sections
+   ---------------------------------------------------------------------------
+   Each major block fades and lifts slightly into place as it enters the
+   viewport. Driven by IntersectionObserver in project-detail.js, toggling
+   .is-visible — kept entirely on the opacity/transform compositor layer so
+   it stays smooth even on long scroll-heavy pages like these.
+============================================================================= */
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s var(--ease-standard), transform 0.7s var(--ease-standard);
+    will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+
+/* =============================================================================
+   RESPONSIVE — tablet & desktop
+   ---------------------------------------------------------------------------
+   Mobile-first base above matches the Figma 375px frames. From 768px up,
+   case studies move toward a two-column reading layout so the page reads
+   like an article rather than a single stretched mobile column.
+============================================================================= */
+@media (min-width: 768px) {
+    .project-main {
+        padding-left: var(--space-8);
+        padding-right: var(--space-8);
+    }
+
+    .project-content {
+        max-width: 720px;
+    }
+
+    .project-hero-image {
+        aspect-ratio: 16 / 10;
+    }
+
+    .project-figure-pair img {
+        aspect-ratio: 166 / 280;
+    }
+
+    .project-carousel-track {
+        aspect-ratio: 16 / 10;
+    }
+}
+
+@media (min-width: 1024px) {
+    .project-content {
+        max-width: 880px;
+    }
+
+    .project-body {
+        gap: var(--space-8);
+    }
+
+    .project-hero {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        gap: var(--space-7);
+        align-items: start;
+    }
+
+    .project-hero-image {
+        aspect-ratio: 1 / 1;
+    }
+
+    .project-title-block {
+        align-self: stretch;
+        justify-content: center;
+    }
+
+    .project-metadata {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .project-section-body {
+        max-width: 640px;
+    }
+
+    .project-figure-pair img {
+        aspect-ratio: 166 / 240;
+    }
+}

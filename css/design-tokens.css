@@ -1,0 +1,173 @@
+/* =============================================================================
+   DESIGN SYSTEM — MARTA'S PORTFOLIO
+   Single source of truth for every design decision in the project.
+   Reference: Figma "Projeto final — Current", UI Kit pages:
+     Colors:     node 345-785
+     Typography: node 345-789
+     Components: node 345-786
+
+   Rule: nothing in style.css (or any page) should hardcode a color, a
+   spacing value, a font-size, a z-index, or a breakpoint. If it's not in
+   here, add it here first, then reference it. This is what keeps a value
+   like "the hero overlay's travel distance" from silently drifting out of
+   sync with "the scroll driver's height" — the kind of mismatch that caused
+   the scroll animation bug in an earlier pass.
+
+   Every color/type value below was read directly off the Figma color-card
+   and typography-table components, not eyeballed from a screenshot.
+============================================================================= */
+
+:root {
+
+    /* ---------------------------------------------------------------------
+       COLOR — Paper & Ink (the home screen)
+       --------------------------------------------------------------------- */
+    --color-paper-white:          #F7F6F3;  /* --white  — home background, planet & section titles on dark */
+    --color-paper-soft:           #EFEEE9;  /* --white2 — home background, planet & section titles on dark */
+    --color-ink:                  #1A1A22;  /* --ink — home lettering */
+    --color-ink-soft:             #5B5B66;  /* --ink-soft — sub-copy & scroll hint on paper */
+
+    /* COLOR — Cosmos (deep space backgrounds) */
+    --color-cosmos:               #08080F;  /* --cosmos — primary space background everywhere */
+    --color-cosmos-2:             #0D0C16;  /* --cosmos2 — card fills */
+    --color-cosmos-3:             #14121F;  /* --cosmos-3 — nebula tint */
+    --color-about-night:          #0A0814;  /* bio section base, behind the galaxy */
+
+    /* COLOR — Purple (accents) */
+    --color-purple:               #60519B;  /* italic accent type */
+    --color-purple-glow:          #8576C4;  /* glows, highlights */
+    --color-purple-ink:           #4A3F6B;  /* guide narration tinted over paper */
+    --color-deep-violet:          #2A2147;  /* galaxy sky base & bio radial bloom */
+
+    /* COLOR — Lavender (body text on dark) */
+    --color-lavender:             #BFC0D1;  /* primary body copy on cosmos */
+    --color-lavender-dim:         #8B8CA0;  /* muted meta, captions, secondary copy */
+    --color-lavender-light:       #E7E2F5;  /* lede paragraph over the galaxy / active nav on dark */
+    --color-lavender-cue:         #CFC8EC;  /* scroll-cue label on purple sky */
+
+    /* COLOR — Celestial Gold (stars, dividers, art world) */
+    --color-gold:                 #E7D3A1;  /* stars, constellations, dividers, CTAs */
+    --color-gold-bright:          #F4E7C4;  /* hover state, guide caption, selection text */
+    --color-gold-dim:             #B6A578;  /* numerals, meta keys */
+
+    /* COLOR — semantic aliases (so component CSS reads by role, not by palette name) */
+    --color-surface-light:        var(--color-paper-soft);
+    --color-surface-light-2:      var(--color-paper-white);
+    --color-surface-dark:         var(--color-cosmos);
+    --color-surface-dark-2:       var(--color-cosmos-2);
+    --color-surface-dark-3:       var(--color-cosmos-3);
+    --color-surface-about:        var(--color-about-night);
+
+    --color-text-on-light:        var(--color-ink);
+    --color-text-on-light-muted:  var(--color-ink-soft);
+
+    --color-text-on-dark:         var(--color-lavender);
+    --color-text-on-dark-light:   var(--color-lavender-light);
+    --color-text-on-dark-muted:   var(--color-lavender-dim);
+    --color-text-on-dark-faint:   var(--color-lavender-cue);
+
+    --color-accent-gold:          var(--color-gold);
+    --color-accent-gold-hover:    var(--color-gold-bright);
+    --color-accent-gold-dim:      var(--color-gold-dim);
+    --color-accent-purple:        var(--color-purple);
+    --color-accent-purple-glow:   var(--color-purple-glow);
+
+    --color-disabled:             var(--color-text-on-light-muted);
+    --color-focus-ring:           var(--color-accent-gold);
+
+
+    /* ---------------------------------------------------------------------
+       TYPOGRAPHY
+       Sizes below are [mobile / desktop] from the Figma type table — both
+       ends of each heading's clamp() are real values from the kit, not
+       estimated. Letter-spacing is "em × 100" per the kit's own notation.
+       --------------------------------------------------------------------- */
+    --font-serif: "Cormorant Garamond", Georgia, serif;   /* headings, logo, pull-quotes, planet & project names */
+    --font-sans:  "Jost", system-ui, sans-serif;          /* body text, all uppercase labels, every interactive element */
+
+    /* Headings (Cormorant Garamond) */
+    --text-h1: clamp(3.5rem, 7vw, 6rem);        /* 56px → 96px — page hero only, one per page */
+    --text-h2: clamp(2.75rem, 6vw, 4.5rem);     /* 44px → 72px — major scene titles (About, "Choose a world") */
+    --text-h3: clamp(2rem, 4.5vw, 3rem);        /* 32px → 48px — pull-quotes, sub-scene heading, italic by default */
+    --text-h4: clamp(1.625rem, 2.2vw, 2rem);    /* 26px → 32px — planet names, bio sub-headings */
+    --text-h5: clamp(1.375rem, 1.6vw, 1.5rem);  /* 22px → 24px — card titles, discipline rows, prev/next nav, footer */
+    --text-h6: 1.125rem;                         /* 18px, static — nav brand wordmark, in-card micro-headings */
+
+    /* Body text (Jost) */
+    --text-lg: clamp(1.125rem, 1.4vw, 1.25rem); /* 18px → 20px — intro lede, world description */
+    --text-md: 1rem;                             /* 16px — default body: bio, case-study story, world description */
+    --text-rg: 0.875rem;                         /* 14px — card blurbs, secondary descriptions, in-card meta */
+    --text-sm: 0.8125rem;                        /* 13px — helper text, scroll hints, form descriptions */
+    --text-caption: 0.75rem;                     /* 12px — image credits, micro-copy. Never go smaller. */
+
+    /* Labels (Jost, uppercase, wide tracking — nav, eyebrows, tags, meta keys, every interactive element) */
+    --label-lg-size: 0.8125rem;   /* 13px — nav links, eyebrows above H2 */
+    --label-md-size: 0.75rem;     /* 12px — tag pills, meta keys (Year/Medium) */
+    --label-sm-size: 0.6875rem;   /* 11px — micro labels, planet "Enter", card index */
+    --label-lg-tracking: 0.28em;  /* 28% */
+    --label-md-tracking: 0.32em;  /* 32% */
+    --label-sm-tracking: 0.40em;  /* 40% */
+
+
+    /* ---------------------------------------------------------------------
+       SPACING — 4px base scale
+       --------------------------------------------------------------------- */
+    --space-1: 0.25rem;  /* 4px */
+    --space-2: 0.5rem;   /* 8px */
+    --space-3: 0.75rem;  /* 12px */
+    --space-4: 1rem;     /* 16px */
+    --space-5: 1.5rem;   /* 24px */
+    --space-6: 2rem;     /* 32px */
+    --space-7: 3rem;     /* 48px */
+    --space-8: 4rem;     /* 64px */
+
+
+    /* ---------------------------------------------------------------------
+       RADIUS / BORDER
+       --------------------------------------------------------------------- */
+    --radius-sm: 6px;     /* project preview images */
+    --radius-pill: 40px;  /* tag chips */
+    --radius-circle: 50%; /* back button, dot indicators */
+
+    --border-hairline: 0.5px solid var(--color-text-on-dark-muted);
+    --border-focus: 1px solid var(--color-accent-gold);
+
+
+    /* ---------------------------------------------------------------------
+       Z-INDEX SCALE
+       Named layers instead of raw numbers, so two unrelated rules never
+       fight for the same number by accident (the planets/header collision
+       from an earlier pass happened because both used a bare "100").
+       --------------------------------------------------------------------- */
+    --z-base: 0;
+    --z-content: 1;
+    --z-decorative: 5;
+    --z-planet: 10;
+    --z-hero-overlay: 50;
+    --z-nav: 100;
+    --z-nav-overlay: 110; /* mobile nav panel + scrim, must clear --z-nav */
+
+
+    /* ---------------------------------------------------------------------
+       MOTION
+       --------------------------------------------------------------------- */
+    --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+    --duration-fast: 0.3s;
+    --duration-standard: 0.4s;
+
+
+    /* ---------------------------------------------------------------------
+       LAYOUT
+       --------------------------------------------------------------------- */
+    --content-max-width: 343px; /* mobile-first content column, per Figma */
+    --nav-h: 60px; /* JS overwrites this with the navbar's real measured height */
+    --nav-collapse-bp: 640px; /* below this, the nav becomes a hamburger-triggered panel */
+
+
+    /* ---------------------------------------------------------------------
+       BREAKPOINTS (for reference in comments — CSS can't @media a variable,
+       these document the values the media queries below actually use)
+       --------------------------------------------------------------------- */
+    --bp-mobile-max: 639.98px;  /* matches the Figma type table's "Mobile" column (≤640px) */
+    --bp-desktop-min: 1024px;   /* matches the Figma type table's "Desktop" column (≥1024px) */
+}

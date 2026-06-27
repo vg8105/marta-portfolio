@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Prisma PT — Marta's Portfolio</title>
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./css/design-tokens.css">
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="./css/project-detail.css">
+    </head>
+
+    <body class="art-page project-page">
+        <header class="site-header position-fixed w-100 dark" id="siteHeader">
+            <nav class="nav-bar" aria-label="Main navigation">
+                <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navList" aria-label="Open menu">
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                </button>
+                <ul class="nav-list" id="navList">
+                    <li><a class="nav-link label-lg" data-section="home" href="./index.html#home"><span class="nav-bullet" aria-hidden="true"></span>HOME</a></li>
+                    <li><a class="nav-link label-lg active" data-section="projects" href="./index.html#cosmos" aria-current="page"><span class="nav-bullet" aria-hidden="true"></span>PROJECTS</a></li>
+                    <li><a class="nav-link label-lg" data-section="about" href="./index.html#about"><span class="nav-bullet" aria-hidden="true"></span>ABOUT</a></li>
+                    <li><a class="nav-link label-lg" data-section="contacts" href="./index.html#contacts"><span class="nav-bullet" aria-hidden="true"></span>CONTACTS</a></li>
+                </ul>
+            </nav>
+        </header>
+        <button class="nav-scrim" id="navScrim" type="button" aria-label="Close menu" tabindex="-1"></button>
+
+        <main class="project-main">
+            <div class="project-content">
+
+                <a href="./web-projects.html" class="project-back label-md">
+                    <span>BACK TO PROJECTS</span>
+                    <span class="project-back-icon" aria-hidden="true">&times;</span>
+                </a>
+
+                <div class="project-body">
+
+                    <!-- ABOVE THE FOLD -->
+                    <div class="project-hero reveal">
+                        <p class="label-lg project-number">PROJECT 1</p>
+
+                        <div class="project-hero-image project-hero-image--device" role="img" aria-label="Prisma PT mobile app mockup — image pending export from Figma">
+                            <span class="label-sm">IMAGE PENDING</span>
+                        </div>
+
+                        <div class="project-title-block">
+                            <h1 class="project-title">Prisma PT</h1>
+                            <p class="text-rg project-subtitle">A political news and learning app for young Portuguese adults.</p>
+                            <div class="project-divider"></div>
+
+                            <div class="project-metadata">
+                                <div>
+                                    <span class="label-md project-meta-key">ROLE</span>
+                                    <span class="text-sm project-meta-value">Solo designer</span>
+                                </div>
+                                <div>
+                                    <span class="label-md project-meta-key">YEAR</span>
+                                    <span class="text-sm project-meta-value">2025</span>
+                                </div>
+                                <div>
+                                    <span class="label-md project-meta-key">TOOLS</span>
+                                    <span class="text-sm project-meta-value">Figma</span>
+                                </div>
+                                <div>
+                                    <span class="label-md project-meta-key">TYPE</span>
+                                    <span class="text-sm project-meta-value">Coursework</span>
+                                </div>
+                            </div>
+                            <div class="project-divider"></div>
+                        </div>
+                    </div>
+
+                    <!-- OVERVIEW -->
+                    <div class="project-section reveal">
+                        <p class="label-md project-section-label">OVERVIEW</p>
+                        <p class="text-md project-section-body">Most people aged 18-35 learn about politics through social media: passively, impulsively, and without reliable sources. Prisma is a mobile app that turns scroll into structured understanding with verified news and side-by-side party positions designed for users who want to think for themselves. Research with 33 participants confirmed this gap, a usability test scored design 5/5 for ease of use and singled out the Debates view, which shows all party positions on one topic at once, as something no existing app offers.</p>
+                    </div>
+
+                    <!-- THE PROBLEM -->
+                    <div class="project-section reveal">
+                        <p class="label-md project-section-label">THE PROBLEM</p>
+                        <p class="project-pullquote">People scroll politics but never <em>understand it.</em></p>
+                        <p class="text-md project-section-body">A survey of 33 young adults found that over 60% spend more than an hour a day on social media, yet most feel confused or misinformed on political topics. Clickbait, absent sources, and opinions dressed as facts leave users with more anxiety than knowledge.</p>
+                        <div class="project-figure project-figure--spaced">
+                            <div class="project-hero-image" role="img" aria-label="Survey results chart placeholder — image pending export from Figma">
+                                <span class="label-sm">IMAGE PENDING</span>
+                            </div>
+                            <p class="caption project-figure-cap">Survey results - top frustrations when consuming online information</p>
+                        </div>
+                    </div>
+
+                    <!-- FULL PROCESS -->
+                    <div class="project-section reveal">
+                        <p class="label-md project-section-label">FULL PROCESS</p>
+                        <p class="text-md project-section-body">All UX stages and UI design choices can be found <a href="https://www.figma.com/slides/mcPhU30jbVceLXm5i6HRRL" target="_blank" rel="noopener" class="project-link">here</a> in <em>full detail</em>.</p>
+                        <ul class="project-process-steps text-md project-figure--spaced">
+                            <li>1. <a href="https://www.figma.com/deck/mcPhU30jbVceLXm5i6HRRL/Prisma-PT?node-id=1-83" target="_blank" rel="noopener">Empathy:</a> desk research; questionnaire; personas; benchmarking (slides 2–12)</li>
+                            <li>2. <a href="https://www.figma.com/deck/mcPhU30jbVceLXm5i6HRRL/Prisma-PT?node-id=1-140" target="_blank" rel="noopener">Strategy:</a> user journey; user stories; How might we; sitemap (slides 13–16)</li>
+                            <li>3. <a href="https://www.figma.com/deck/mcPhU30jbVceLXm5i6HRRL/Prisma-PT?node-id=1-160" target="_blank" rel="noopener">Ideation:</a> user flow; lo-fi, hi-fi wireframes, grid and layout (slides 17–23)</li>
+                            <li>4. <a href="https://www.figma.com/deck/mcPhU30jbVceLXm5i6HRRL/Prisma-PT?node-id=1-195" target="_blank" rel="noopener">Prototyping:</a> UI kit (slides 24–27)</li>
+                            <li>5. <a href="https://www.figma.com/deck/mcPhU30jbVceLXm5i6HRRL/Prisma-PT?node-id=1-215" target="_blank" rel="noopener">Validation:</a> usability testing (slides 28–39)</li>
+                        </ul>
+                    </div>
+
+                    <!-- PROCESS SUMMARY -->
+                    <div class="project-section reveal">
+                        <p class="label-md project-section-label">PROCESS SUMMARY</p>
+                        <p class="project-pullquote">Built from research, <em>tested</em> once it was real.</p>
+                        <p class="text-md project-section-body">The design was fully built before anyone using it. That's the opposite of the process I would choose if I had more time. This means the usability test became high-stakes rather than iterative. What it revealed was useful: the Debates page had all party positions expanded by default, which was overwhelming. A single round of low-fi testing would probably have caught that sooner. The tester suggested collapsing to headings first, letting users open only what they wanted to read. That change made it into the final design.</p>
+                        <div class="project-figure project-figure--spaced">
+                            <div class="project-figure-pair">
+                                <div class="project-hero-image" role="img" aria-label="Debates page, fully expanded — image pending"><span class="label-sm">PENDING</span></div>
+                                <div class="project-hero-image" role="img" aria-label="Debates page, collapsed — image pending"><span class="label-sm">PENDING</span></div>
+                            </div>
+                            <p class="caption project-figure-cap">Debates fully expanded. Collapsed main arguments for each party perspective after testing.</p>
+                        </div>
+                    </div>
+
+                    <!-- FINAL DESIGN -->
+                    <div class="project-final-design reveal">
+                        <p class="label-md project-section-label">FINAL DESIGN</p>
+                        <p class="project-final-link">Find the full prototype <a href="https://www.figma.com/design/NIF64zrHJScTJfmIrRyeGj/Prisma-PT-final" target="_blank" rel="noopener">here!</a></p>
+                        <div class="project-figure">
+                            <div class="project-hero-image" role="img" aria-label="Simulation of app navigation — image pending export from Figma">
+                                <span class="label-sm">IMAGE PENDING</span>
+                            </div>
+                            <p class="caption project-figure-cap">Simulation of app navigation. Note: full pages are not visible.</p>
+                        </div>
+                    </div>
+
+                    <!-- OUTCOME -->
+                    <div class="project-outcome reveal">
+                        <p class="label-md project-outcome-label">OUTCOME</p>
+                        <p class="project-outcome-body">Usability testing scored 5/5 for ease of use and 5/5 for clarity. The tester called the Debates page "super important" — noting no existing product shows party positions side by side on one topic.</p>
+                    </div>
+
+                    <!-- REFLECTION -->
+                    <div class="project-reflection reveal">
+                        <p class="label-md project-section-label">WHAT I WOULD DO NEXT</p>
+                        <p class="text-md project-section-body">The tester suggested adding article links to news summaries, and using topic tags on the Debates page. I would increase the sample of usability tests with users who have less prior political knowledge — the Concepts section is likely more important to them, and I haven't validated that yet.</p>
+                        <div class="project-divider"></div>
+                    </div>
+
+                    <!-- PAGINATION -->
+                    <nav class="project-pagination reveal" aria-label="Other web projects">
+                        <span class="project-pagination-link label-sm" aria-disabled="true">
+                            <span class="project-pagination-arrow" aria-hidden="true">&rarr;</span> PREVIOUS
+                        </span>
+                        <a href="./web-eucerin.html" class="project-pagination-link project-pagination-link--next label-sm">
+                            NEXT <span class="project-pagination-arrow" aria-hidden="true">&rarr;</span>
+                        </a>
+                    </nav>
+
+                </div>
+            </div>
+        </main>
+
+        <script src="./js/nav-offset.js"></script>
+        <script src="./js/project-detail.js"></script>
+    </body>
+</html>

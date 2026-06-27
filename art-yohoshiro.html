@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Yohoshiro — Marta's Portfolio</title>
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./css/design-tokens.css">
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="./css/project-detail.css">
+    </head>
+
+    <body class="art-page project-page">
+        <header class="site-header position-fixed w-100 dark" id="siteHeader">
+            <nav class="nav-bar" aria-label="Main navigation">
+                <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navList" aria-label="Open menu">
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                </button>
+                <ul class="nav-list" id="navList">
+                    <li><a class="nav-link label-lg" data-section="home" href="./index.html#home"><span class="nav-bullet" aria-hidden="true"></span>HOME</a></li>
+                    <li><a class="nav-link label-lg active" data-section="projects" href="./index.html#cosmos" aria-current="page"><span class="nav-bullet" aria-hidden="true"></span>PROJECTS</a></li>
+                    <li><a class="nav-link label-lg" data-section="about" href="./index.html#about"><span class="nav-bullet" aria-hidden="true"></span>ABOUT</a></li>
+                    <li><a class="nav-link label-lg" data-section="contacts" href="./index.html#contacts"><span class="nav-bullet" aria-hidden="true"></span>CONTACTS</a></li>
+                </ul>
+            </nav>
+        </header>
+        <button class="nav-scrim" id="navScrim" type="button" aria-label="Close menu" tabindex="-1"></button>
+
+        <main class="project-main">
+            <div class="project-content">
+
+                <a href="./art-projects.html" class="project-back label-md">
+                    <span>BACK TO PROJECTS</span>
+                    <span class="project-back-icon" aria-hidden="true">&times;</span>
+                </a>
+
+                <div class="project-body">
+
+                    <div class="project-hero reveal">
+                        <p class="label-lg project-number">PROJECT 1</p>
+
+                        <div class="project-hero-image" role="img" aria-label="Yohoshiro illustration — image pending export from Figma">
+                            <span class="label-sm">IMAGE PENDING</span>
+                        </div>
+
+                        <div class="project-title-block">
+                            <h1 class="project-title">Yohoshiro</h1>
+                            <div class="project-divider"></div>
+                            <div class="project-metadata">
+                                <div>
+                                    <span class="label-md project-meta-key">TYPE OF WORK</span>
+                                    <span class="text-sm project-meta-value">Commission</span>
+                                </div>
+                                <div>
+                                    <span class="label-md project-meta-key">PUBLICATION</span>
+                                    <span class="text-sm project-meta-value">Mensagem de Lisboa</span>
+                                </div>
+                                <div>
+                                    <span class="label-md project-meta-key">YEAR</span>
+                                    <span class="text-sm project-meta-value">2025</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-section reveal">
+                        <p class="label-md project-section-label">STATEMENT</p>
+                        <p class="text-md project-section-body">An illustration commissioned for Mensagem de Lisboa, accompanying an article about Hugo and Thalita — a Portuguese-Chinese and Brazilian couple who brought K-pop food culture to Lisbon through their restaurant Yohoshiro. Working from their Instagram before the article existed, the brief was entirely self-directed: find the emotional core of the story and make it visible.</p>
+                        <p class="text-md project-section-body">The piece centers on their signature Korean hotdogs, but the real subject is the warmth between them — the way their partnership lives inside the food they make. A celebration of two people who built something together.</p>
+                    </div>
+
+                    <div class="project-section reveal">
+                        <p class="label-md project-section-label">PROCESS</p>
+                        <div class="project-carousel" data-carousel>
+                            <div class="project-carousel-track">
+                                <div class="project-carousel-slide is-active">
+                                    <div class="project-hero-image" role="img" aria-label="Process stage 1 — pending image"><span class="label-sm">1 — PENDING</span></div>
+                                </div>
+                                <div class="project-carousel-slide">
+                                    <div class="project-hero-image" role="img" aria-label="Process stage 2 — pending image"><span class="label-sm">2 — PENDING</span></div>
+                                </div>
+                                <div class="project-carousel-slide">
+                                    <div class="project-hero-image" role="img" aria-label="Process stage 3 — pending image"><span class="label-sm">3 — PENDING</span></div>
+                                </div>
+                                <div class="project-carousel-slide">
+                                    <div class="project-hero-image" role="img" aria-label="Process stage 4 — pending image"><span class="label-sm">4 — PENDING</span></div>
+                                </div>
+                            </div>
+                            <div class="project-carousel-dots" role="tablist" aria-label="Process stage">
+                                <button class="project-carousel-dot is-active" type="button" aria-current="true"><span>1</span></button>
+                                <button class="project-carousel-dot" type="button" aria-current="false"><span>2</span></button>
+                                <button class="project-carousel-dot" type="button" aria-current="false"><span>3</span></button>
+                                <button class="project-carousel-dot" type="button" aria-current="false"><span>4</span></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-section reveal">
+                        <p class="label-md project-section-label">PUBLICATION</p>
+                        <div class="project-figure">
+                            <div class="project-hero-image project-hero-image--tall" role="img" aria-label="Photo of illustration in Mensagem de Lisboa online newspaper — image pending">
+                                <span class="label-sm">IMAGE PENDING</span>
+                            </div>
+                            <p class="caption project-figure-cap">Photo of illustration in Mensagem de Lisboa online newspaper</p>
+                        </div>
+                        <div class="project-figure project-figure--spaced">
+                            <div class="project-hero-image" role="img" aria-label="Yohoshiro's thank you Instagram post — image pending">
+                                <span class="label-sm">IMAGE PENDING</span>
+                            </div>
+                            <p class="caption project-figure-cap">Yohoshiro's thank you instagram post</p>
+                        </div>
+                        <div class="project-divider project-figure--spaced"></div>
+                    </div>
+
+                    <nav class="project-pagination reveal" aria-label="Project navigation">
+                        <a href="./web-lsd-connect.html" class="project-pagination-link label-sm">
+                            <span class="project-pagination-arrow" aria-hidden="true">&rarr;</span> PREVIOUS
+                        </a>
+                        <a href="./art-bougainvilleas.html" class="project-pagination-link project-pagination-link--next label-sm">
+                            NEXT <span class="project-pagination-arrow" aria-hidden="true">&rarr;</span>
+                        </a>
+                    </nav>
+
+                </div>
+            </div>
+        </main>
+
+        <script src="./js/nav-offset.js"></script>
+        <script src="./js/project-detail.js"></script>
+    </body>
+</html>

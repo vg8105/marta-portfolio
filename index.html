@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Marta's Portfolio</title>
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./css/design-tokens.css">
+        <link rel="stylesheet" href="./css/style.css">
+    </head>
+
+    <body>
+    <!-- MAIN NAV
+         Desktop (≥640px): horizontal list, top-right, always visible — matches
+         the Figma "Menu, Property 1=Desktop" component exactly.
+         Mobile (<640px): collapses behind a hamburger button into a slide-in
+         panel with a backdrop scrim. This collapse behavior isn't in the
+         Figma file (its mobile frames just show the same vertical list
+         always open) — it's a usability improvement for real phone screens,
+         where a permanently-open menu would crowd "Marta's Portfolio". -->
+    <header class="site-header position-fixed w-100" id="siteHeader">
+        <nav class="nav-bar" aria-label="Main navigation">
+            <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navList" aria-label="Open menu">
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+            </button>
+            <ul class="nav-list" id="navList">
+                <li><a class="nav-link label-lg active" data-section="home" href="#home" aria-current="page"><span class="nav-bullet" aria-hidden="true"></span>HOME</a></li>
+                <li><a class="nav-link label-lg" data-section="projects" href="#cosmos"><span class="nav-bullet" aria-hidden="true"></span>PROJECTS</a></li>
+                <li><a class="nav-link label-lg" data-section="about" href="#about"><span class="nav-bullet" aria-hidden="true"></span>ABOUT</a></li>
+                <li><a class="nav-link label-lg" data-section="contacts" href="#contacts"><span class="nav-bullet" aria-hidden="true"></span>CONTACTS</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Backdrop behind the mobile nav panel; clicking it closes the menu
+         the same way a click outside any dropdown would. -->
+    <button class="nav-scrim" id="navScrim" type="button" aria-label="Close menu" tabindex="-1"></button>
+
+    <!-- SCROLL SPACER: drives the pinned hero + peel animation. Height set by JS. -->
+    <div class="scroll-driver position-relative" id="scrollDriver"></div>
+
+    <!-- HERO OVERLAY (pinned, scrolls up to reveal cosmos) -->
+    <div class="hero-overlay position-fixed d-flex flex-column align-items-center justify-content-center" id="heroOverlay">
+        <div class="hero-solid position-absolute" id="home"></div>
+
+        <span class="hero-star position-absolute" aria-hidden="true">
+            <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M20 0C20 11.0457 11.0457 20 0 20C11.0457 20 20 28.9543 20 40C20 28.9543 28.9543 20 40 20C28.9543 20 20 11.0457 20 0Z" fill="#E7D3A1"/></svg>
+        </span>
+
+        <div class="hero-content position-absolute d-flex flex-column align-items-center justify-content-center gap-4 px-3">
+            <h1 class="hero-title">Marta's<br><em>Portfolio</em></h1>
+            <p class="hero-tagline text-center label-lg">A UNIVERSE OF ART, WEB DESIGN &amp; CODING</p>
+            <div class="banner d-flex align-items-center w-100">
+                <div class="banner-line"></div>
+                <svg class="banner-diamond" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M10 0C10 5.52285 5.52285 10 0 10C5.52285 10 10 14.4772 10 20C10 14.4772 14.4772 10 20 10C14.4772 10 10 5.52285 10 0Z" fill="#B6A578"/></svg>
+                <div class="banner-line"></div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator position-absolute d-flex flex-column align-items-center gap-2">
+            <span class="label-lg">SCROLL</span>
+            <span class="scroll-line" aria-hidden="true"></span>
+        </div>
+
+        <svg class="drip-edge position-absolute d-block" viewBox="0 0 1441 418" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M1439.97 0.278564H0.399501V40.692C0.399501 40.692 0.126872 58.9003 0.39946 80.2173C0.672048 101.534 0.127365 118.41 0.399805 132.399C0.672244 146.389 0.399757 179.919 0.399757 179.919C0.399757 220.998 10.0861 129.735 10.0861 98.8696V50.4623C10.0861 29.1453 19.6215 18.2648 37.8749 18.2648C52.4777 18.2648 58.691 36.7959 59.6701 50.4623C61.8496 80.8834 59.6701 113.747 59.6701 130.623V172.369V210.562V254.084C59.6701 264.742 63.2118 308.487 75.1991 308.487C96.7218 308.487 89.6873 165.263 114.158 165.263C148.485 165.263 126.974 379.843 149.468 395.387C162 404.047 161.411 339.3 161.411 326.917V277.399V234.099V193.464V128.18C161.411 110.822 159.021 108.347 161.411 91.0978C164.033 72.1736 171.01 36.6951 194.376 36.6951C216.989 36.6951 200.447 83.548 224.345 83.548C236.06 83.548 235.787 55.3474 251.316 55.3474C266.845 55.3474 258.945 134.634 258.945 157.269V198.571C258.945 213.004 249.954 265.853 280.74 265.853C303.897 265.853 294.785 206.787 294.785 198.571C294.785 193.464 291.731 157.269 309.073 157.269C326.416 157.269 309.073 252.752 337.68 252.752C360.564 252.752 356.75 146.345 356.75 126.404V74.888C356.75 62.009 356.75 39.5818 373.097 39.5818C397.465 39.5818 386.719 83.1255 386.719 98.2035C386.719 120.631 381.421 162.599 392.863 162.599C404.306 162.599 413.334 134.743 423.649 149.942C430.732 160.378 418.502 227.638 424.86 239.429C435.758 259.635 435.909 274.291 435.909 290.945C435.909 298.847 430.732 329.36 447.624 329.36C464.515 329.36 447.923 241.649 478.409 241.649C508.895 241.649 502.233 211.228 502.233 193.464C502.233 175.7 496.518 105.882 518.313 105.882C540.108 105.882 517.368 278.51 539.708 278.51C558.234 278.51 557.81 205.455 578.939 205.455C600.068 205.455 583.854 261.084 610.008 261.084C630.713 261.084 613.53 225.754 645.415 205.455C671.994 188.533 682.043 173.035 684.222 149.497C686.402 125.96 686.129 73.3337 705.473 73.3337C728.085 73.3337 727.54 114.191 727.54 145.501C727.54 176.81 728.63 196.128 733.412 219.888C738.195 243.648 743.055 417.121 801.065 417.121C850.104 417.121 860.642 270.506 860.642 194.13C860.642 121.297 900.69 126.848 908.046 163.931C915.402 201.014 915.947 270.738 936.107 270.738C958.242 270.738 943.191 168.372 976.973 168.372C1010.76 168.372 989.505 340.906 1033.91 340.906C1097.39 340.906 1037.33 54.0151 1092.22 54.0151C1144.3 54.0151 1097.67 168.372 1128.93 168.372C1155.97 168.372 1122.73 107.974 1155.97 107.974C1189.2 107.974 1155.71 204.797 1209.96 204.797C1276.3 204.797 1211.37 276.897 1247.45 276.897C1281.02 276.897 1219.44 212.782 1297.63 212.782C1343.13 212.782 1306.05 32.032 1342.71 32.032C1379.37 32.032 1381.55 73.1116 1381.55 103.089C1381.55 133.066 1404.79 179.252 1439.97 179.252C1440.66 179.252 1439.97 0.278564 1439.97 0.278564Z" fill="#F5F0EB"/>
+        </svg>
+    </div>
+
+    <!-- COSMOS (underneath the hero) -->
+    <section class="cosmos-section position-relative" id="cosmos">
+        <div class="stars-layer position-fixed" id="starsLayer"></div>
+
+        <div class="cosmos-content position-relative" id="cosmosContent">
+            <h2 class="cosmos-title text-center">Choose a world to <em>explore</em></h2>
+
+            <div class="planets-row position-relative" id="planetsRow">
+                <a href="./art-projects.html" class="planet-card planet-card--art d-flex flex-column align-items-center text-center text-decoration-none">
+                    <span class="planet-sphere planet-sphere--art" aria-hidden="true"></span>
+                    <h3 class="planet-name">Digital Drawing</h3>
+                    <p class="planet-sub label-lg">PAINTING &amp; ILLUSTRATION</p>
+                    <span class="planet-enter d-flex align-items-center justify-content-center label-sm">ENTER <span aria-hidden="true">&rarr;</span></span>
+                </a>
+                <a href="./web-projects.html" class="planet-card planet-card--wd d-flex flex-column align-items-center text-center text-decoration-none">
+                    <span class="planet-sphere planet-sphere--wd" aria-hidden="true"></span>
+                    <h3 class="planet-name">Web Design</h3>
+                    <p class="planet-sub label-lg">INTERFACE &amp; EXPERIENCE</p>
+                    <span class="planet-enter d-flex align-items-center justify-content-center label-sm">ENTER <span aria-hidden="true">&rarr;</span></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT
+         The Figma file only defines this section's title — no bio, photo,
+         or body copy exists yet (its exploratory illustrations are
+         decorative side-profile artwork, not a finished layout). Built as a
+         dummy content scaffold: every placeholder below is a real, styled
+         slot using design-system tokens, ready for Marta to drop her actual
+         bio/photo/skills into without anyone touching layout or CSS. -->
+    <section class="about-section" id="about">
+        <div class="about-inner">
+            <p class="label-lg eyebrow">A LITTLE ABOUT</p>
+            <h2 class="about-title">About <em>me</em></h2>
+
+            <div class="about-body">
+                <div class="about-portrait" role="img" aria-label="Placeholder for a portrait or illustrated self-portrait">
+                    <span class="label-sm">PORTRAIT PLACEHOLDER</span>
+                </div>
+
+                <div class="about-bio">
+                    <p class="text-md about-bio-placeholder">
+                        <!-- TODO(Marta): replace with your real bio — who you are,
+                             what you make, and what draws you to it. 2–4 short
+                             paragraphs reads well at this width. -->
+                        Add a short introduction here: who you are, what you create,
+                        and what draws you to art and web design. Two or three
+                        sentences is plenty to start with — you can always expand it later.
+                    </p>
+
+                    <ul class="about-facts">
+                        <li class="about-fact">
+                            <span class="label-md about-fact-key">BASED IN</span>
+                            <span class="text-rg about-fact-value">— add city/country —</span>
+                        </li>
+                        <li class="about-fact">
+                            <span class="label-md about-fact-key">FOCUS</span>
+                            <span class="text-rg about-fact-value">— add specialisms —</span>
+                        </li>
+                        <li class="about-fact">
+                            <span class="label-md about-fact-key">TOOLS</span>
+                            <span class="text-rg about-fact-value">— add software/stack —</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTS
+         No corresponding section exists in the Figma file at all (the nav
+         link points to #contacts with nothing built behind it). Dummy
+         scaffold below: swap the placeholder email/social hrefs for real
+         ones whenever they're ready — the layout doesn't need to change. -->
+    <section class="contacts-section" id="contacts">
+        <div class="contacts-inner">
+            <p class="label-lg eyebrow">GET IN TOUCH</p>
+            <h2 class="contacts-title">Let's <em>talk</em></h2>
+            <p class="text-md contacts-intro">
+                <!-- TODO(Marta): replace with a real one-liner inviting people to reach out. -->
+                Add a short line here inviting people to get in touch — for
+                commissions, collaborations, or just to say hello.
+            </p>
+
+            <ul class="contacts-list">
+                <li>
+                    <a class="contacts-link label-lg" href="mailto:hello@example.com">
+                        <span class="label-md contacts-link-key">EMAIL</span>
+                        hello@example.com
+                    </a>
+                </li>
+                <li>
+                    <a class="contacts-link label-lg" href="#" target="_blank" rel="noopener">
+                        <span class="label-md contacts-link-key">INSTAGRAM</span>
+                        @yourhandle
+                    </a>
+                </li>
+                <li>
+                    <a class="contacts-link label-lg" href="#" target="_blank" rel="noopener">
+                        <span class="label-md contacts-link-key">BEHANCE</span>
+                        your-portfolio
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="./js/script.js"></script>
+    </body>
+
+</html>

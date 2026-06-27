@@ -1,0 +1,1111 @@
+/* =============================================================================
+   COMPONENT STYLES — MARTA'S PORTFOLIO
+   Consumes tokens from design-tokens.css. No raw color/spacing/z-index
+   values should appear below — if a new one is needed, add it to
+   design-tokens.css first.
+============================================================================= */
+
+/* ===== RESET ===== */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-image: radial-gradient(
+        ellipse at 50% 80%,
+        var(--color-surface-dark-3) 0%,
+        var(--color-surface-dark-2) 45%,
+        var(--color-surface-dark) 75%
+    );
+}
+
+a {
+    color: inherit;
+}
+
+
+/* =============================================================================
+   UTILITIES
+   A minimal, hand-picked set replacing the handful of Bootstrap utility
+   classes the markup used to lean on. Bootstrap's JS/CSS is no longer
+   loaded — the side nav and planet links are plain custom components, so
+   pulling in the whole framework for ~10 utility classes wasn't worth the
+   payload.
+============================================================================= */
+.d-flex       { display: flex; }
+.d-block      { display: block; }
+.flex-column  { flex-direction: column; }
+.align-items-center { align-items: center; }
+.align-items-start  { align-items: flex-start; }
+.align-items-end    { align-items: flex-end; }
+.justify-content-center{ justify-content: center; }
+.text-center  { text-align: center; }
+.text-decoration-none { text-decoration: none; }
+.w-100        { width: 100%; }
+.mx-auto      { margin-left: auto; margin-right: auto; }
+.px-3         { padding-left: var(--space-4); padding-right: var(--space-4); }
+.gap-2        { gap: var(--space-2); }
+.gap-4        { gap: var(--space-5); }
+
+.position-fixed   { position: fixed; }
+.position-absolute{ position: absolute; }
+.position-relative{ position: relative; }
+
+
+/* =============================================================================
+   TYPOGRAPHY
+============================================================================= */
+h1 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: var(--text-h1);
+    line-height: 1;
+    letter-spacing: -0.01em;
+}
+
+h2 {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: var(--text-h2);
+    line-height: 1.05;
+    letter-spacing: -0.005em;
+}
+
+h3 {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: var(--text-h3);
+    line-height: 1.15;
+}
+
+h4 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: var(--text-h4);
+    line-height: 1.2;
+}
+
+h5 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: var(--text-h5);
+    line-height: 1.25;
+}
+
+h6 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: var(--text-h6);
+    line-height: 1.4;
+    letter-spacing: 0.08em;
+}
+
+/* Body text (Jost) */
+.text-lg {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: var(--text-lg);
+    line-height: 1.7;
+}
+
+p, .text-md {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: var(--text-md);
+    line-height: 1.65;
+}
+
+.text-rg {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: var(--text-rg);
+    line-height: 1.6;
+}
+
+.text-sm {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: var(--text-sm);
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+}
+
+.caption {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: var(--text-caption);
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+}
+
+/* Labels (Jost, uppercase, wide tracking) */
+.label-lg {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: var(--label-lg-size);
+    line-height: 1;
+    letter-spacing: var(--label-lg-tracking);
+    text-transform: uppercase;
+}
+
+.label-md {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: var(--label-md-size);
+    line-height: 1;
+    letter-spacing: var(--label-md-tracking);
+    text-transform: uppercase;
+}
+
+.label-sm {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: var(--label-sm-size);
+    line-height: 1;
+    letter-spacing: var(--label-sm-tracking);
+    text-transform: uppercase;
+}
+
+
+/* =============================================================================
+   NAVIGATION
+   Fixed header, shared by every page. ".dark" is a discrete state class
+   toggled once per scroll direction by script.js — it is NOT something
+   that should ever be applied mid-transition (see scroll engine note below).
+============================================================================= */
+/* =============================================================================
+   MAIN NAVIGATION
+   ---------------------------------------------------------------------------
+   Desktop (≥ --nav-collapse-bp): a plain horizontal list, top-right — this
+   matches the Figma "Menu" component's Desktop variant exactly (gap, order,
+   no chrome around it).
+
+   Mobile (< --nav-collapse-bp): the same list collapses behind a hamburger
+   button into a slide-in panel with a backdrop scrim. The Figma file's own
+   "mobile" frames just show this list permanently open and vertical, which
+   eats real space on an actual phone — the collapse here is a deliberate
+   usability improvement layered on top of the design, not something taken
+   from the Figma file.
+
+   ".dark" is a discrete state class toggled once per scroll direction by
+   script.js — it is NOT something that should ever be applied
+   mid-transition (see SCROLL ENGINE below for why that matters).
+============================================================================= */
+.site-header {
+    top: 0;
+    left: 0;
+    z-index: var(--z-nav);
+    padding: var(--space-5);
+}
+
+.nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.nav-list {
+    display: flex;
+    align-items: center;
+    gap: var(--space-5);
+    list-style: none;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: 44px;
+    color: var(--color-text-on-light-muted);
+    transition: color var(--duration-standard) var(--ease-standard);
+}
+
+.nav-bullet {
+    width: 5px;
+    height: 5px;
+    border-radius: var(--radius-circle);
+    background: currentColor;
+    opacity: 0;
+    transition: opacity var(--duration-standard) var(--ease-standard);
+}
+
+.nav-link.active {
+    color: var(--color-text-on-light);
+}
+
+.nav-link.active .nav-bullet {
+    opacity: 1;
+}
+
+/* Dark (cosmos) state */
+header.dark .nav-link {
+    color: var(--color-text-on-dark-muted);
+}
+
+header.dark .nav-link.active {
+    color: var(--color-text-on-dark-light);
+}
+
+/* Hamburger toggle — hidden above --nav-collapse-bp, see responsive section. */
+.nav-toggle {
+    display: none;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    flex-direction: column;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: var(--z-nav-overlay);
+}
+
+.nav-toggle-bar {
+    display: block;
+    width: 22px;
+    height: 1px;
+    background: var(--color-text-on-light);
+    transition: background-color var(--duration-standard) var(--ease-standard),
+                transform var(--duration-standard) var(--ease-standard);
+}
+
+header.dark .nav-toggle-bar {
+    background: var(--color-text-on-dark);
+}
+
+/* Open state: bars become an X. Pure CSS, driven by aria-expanded so the
+   visual state can never drift from the state screen readers announce. */
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:first-child {
+    transform: translateY(3px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:last-child {
+    transform: translateY(-3px) rotate(-45deg);
+}
+
+.nav-toggle:focus-visible {
+    outline: var(--border-focus);
+    outline-offset: 2px;
+}
+
+/* Backdrop scrim behind the mobile panel — hidden entirely above the
+   collapse breakpoint, and hidden (not just transparent) until opened so
+   it can't catch stray clicks/taps. */
+.nav-scrim {
+    display: none;
+}
+
+
+/* =============================================================================
+   SCROLL ENGINE (home page only)
+   ---------------------------------------------------------------------------
+   ARCHITECTURE NOTE — read this before touching any height value here.
+
+   Three pieces have to agree on exactly one distance, or the peel
+   animation desyncs from the scrollbar (the bug from earlier passes):
+
+     1. .scroll-driver's height  -> how much scrollable space exists
+     2. .hero-overlay's height   -> how tall the sliding panel actually is
+     3. the GSAP tween's travel  -> how far that panel gets translated
+
+   Previously, (1) was a hardcoded "200vh" in CSS, (2) was a hardcoded
+   "calc(100vh + 30vw)" in CSS, and (3) was computed in JS from (2) alone.
+   Those two CSS values had no relationship to each other — on any viewport
+   where 30vw didn't equal 100vh (i.e. almost all of them), the panel
+   finished sliding before or after the scrollable space ran out, and the
+   cosmos section underneath would flash, jump, or show through early.
+
+   Fix: (2) is still set in CSS (it's a real visual height — the panel
+   needs *some* height to render). But (1) and (3) are now BOTH derived in
+   JS from that same single measurement of (2), every time, including after
+   resize and after webfonts finish loading. There is now exactly one
+   source of truth for the travel distance.
+   See js/script.js -> calcScrollGeometry().
+============================================================================= */
+.scroll-driver {
+    /* Height is set inline by JS (calcScrollGeometry) to match the hero
+       overlay's real measured height. This value is a fallback only, for
+       the brief instant before JS runs, or if JS fails to load. */
+    height: 100vh;
+    z-index: var(--z-content);
+}
+
+.hero-overlay {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100vh + 30vw);
+    z-index: var(--z-hero-overlay);
+    will-change: transform;
+}
+
+.hero-solid {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--color-surface-light);
+    z-index: var(--z-base);
+}
+
+.hero-content {
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: var(--z-content);
+}
+
+.drip-edge {
+    top: calc(100vh - 2px);
+    left: 0;
+    width: 100%;
+    height: 30vw;
+    min-height: 120px;
+    max-height: 280px;
+    z-index: var(--z-base);
+}
+
+.hero-title {
+    color: var(--color-text-on-light);
+}
+
+.hero-title em {
+    font-style: italic;
+    color: var(--color-accent-purple);
+}
+
+.hero-tagline {
+    color: var(--color-text-on-light-muted);
+    max-width: 22ch;
+}
+
+.hero-star {
+    width: 40px;
+    height: 40px;
+    top: 18%;
+    left: 50%;
+    transform: translateX(calc(-50% - 90px));
+    z-index: var(--z-content);
+}
+
+.hero-star svg {
+    width: 100%;
+    height: 100%;
+}
+
+.banner {
+    width: 100%;
+    max-width: 338px;
+}
+
+.banner-line {
+    flex: 1;
+    height: 0.5px;
+    background-color: var(--color-accent-gold-dim);
+}
+
+.banner-diamond {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+}
+
+.scroll-indicator {
+    bottom: calc(30vw + var(--space-7));
+    color: var(--color-text-on-light);
+    z-index: var(--z-content);
+}
+
+.scroll-line {
+    width: 1px;
+    height: 30px;
+    background: var(--color-text-on-light);
+    animation: scrollBounce 2s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+    0%, 100% { transform: scaleY(1); opacity: 1; }
+    50%      { transform: scaleY(0.4); opacity: 0.4; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .scroll-line {
+        animation: none;
+    }
+}
+
+
+/* =============================================================================
+   COSMOS SECTION
+============================================================================= */
+.cosmos-section {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.stars-layer {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: var(--z-base);
+    pointer-events: none;
+}
+
+.star-particle {
+    /* --duration, --delay and --max-opacity are NOT design tokens — they're
+       per-instance values set inline by createStars() in script.js so every
+       star twinkles at a slightly different rate. Intentionally absent
+       from design-tokens.css. */
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--color-surface-light-2);
+    border-radius: var(--radius-circle);
+    opacity: 0;
+    animation: twinkle var(--duration) ease-in-out var(--delay) infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.1; }
+    50%      { opacity: var(--max-opacity); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .star-particle {
+        animation: none;
+        opacity: var(--max-opacity);
+    }
+}
+
+.cosmos-content {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: calc(var(--nav-h) + var(--space-7)) var(--space-4) var(--space-7);
+    z-index: var(--z-decorative);
+}
+
+.cosmos-title {
+    color: var(--color-surface-light-2);
+    will-change: transform, opacity;
+    margin-bottom: var(--space-8);
+}
+
+.cosmos-title em {
+    font-style: italic;
+    color: var(--color-text-on-dark);
+}
+
+
+/* =============================================================================
+   PLANETS
+   ---------------------------------------------------------------------------
+   Per Figma, the two planets sit on a diagonal (art planet upper-left, web
+   design planet lower-right on mobile), not in a centered horizontal row.
+   The spheres themselves are CSS radial-gradients tuned to match the
+   Figma renders (no bitmap assets — see screenshots captured during the
+   Figma review), so there's nothing to re-export if the palette shifts.
+============================================================================= */
+.planets-row {
+    z-index: var(--z-decorative);
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: var(--space-8);
+}
+
+.planet-card {
+    will-change: transform, opacity;
+    gap: var(--space-4);
+    padding: var(--space-2);
+    border-radius: var(--radius-sm);
+    transition: transform var(--duration-standard) var(--ease-standard);
+}
+
+.planet-card--art {
+    justify-self: start;
+}
+
+.planet-card--wd {
+    justify-self: end;
+}
+
+@media (hover: hover) {
+    .planet-card:hover {
+        transform: translateY(-4px);
+    }
+}
+
+.planet-card:focus-visible {
+    outline: var(--border-focus);
+    outline-offset: 6px;
+    border-radius: var(--radius-circle);
+}
+
+.planet-sphere {
+    display: block;
+    width: 171px;
+    height: 171px;
+    border-radius: var(--radius-circle);
+    z-index: var(--z-planet); /* stays below --z-nav so the header never gets covered mid-scroll */
+}
+
+/* "Digital Drawing" — deep purple sphere, highlight upper-left */
+.planet-sphere--art {
+    background: radial-gradient(
+        circle at 32% 30%,
+        #b3a4e6 0%,
+        #8f7cc9 18%,
+        #5d4f9e 42%,
+        #382f5e 68%,
+        #241f42 100%
+    );
+}
+
+/* "Web Design" — cool lavender-grey sphere, highlight upper-left */
+.planet-sphere--wd {
+    background: radial-gradient(
+        circle at 32% 30%,
+        #e2dfe8 0%,
+        #c3c0cf 20%,
+        #8d8b9c 46%,
+        #545263 72%,
+        #34323f 100%
+    );
+}
+
+.planet-name {
+    color: var(--color-surface-light-2);
+    margin-top: var(--space-2);
+}
+
+.planet-sub {
+    color: var(--color-surface-light-2);
+    max-width: 14ch;
+}
+
+.planet-enter {
+    min-height: 44px;
+    color: var(--color-accent-gold);
+    gap: var(--space-1);
+    transition: color var(--duration-fast) ease;
+}
+
+@media (hover: hover) {
+    .planet-card:hover .planet-enter {
+        color: var(--color-accent-gold-hover);
+    }
+}
+
+.planet-card.disabled {
+    color: var(--color-disabled);
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+
+/* =============================================================================
+   ABOUT
+   ---------------------------------------------------------------------------
+   The Figma file only defines this section's title — no bio, photo, or
+   body layout exists yet (its exploratory artwork is decorative side-profile
+   illustration, not a finished section). Everything below is a real, styled
+   dummy scaffold: swap the placeholder copy/portrait for the real thing
+   without touching this CSS.
+============================================================================= */
+.about-section {
+    width: 100%;
+    min-height: 80vh;
+    padding: var(--space-8) var(--space-4);
+    background: var(--color-surface-about);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-inner {
+    width: 100%;
+    max-width: 900px;
+}
+
+.about-section .eyebrow {
+    color: var(--color-text-on-dark-faint);
+    margin-bottom: var(--space-3);
+}
+
+.about-title {
+    color: var(--color-surface-light-2);
+    margin-bottom: var(--space-7);
+}
+
+.about-title em {
+    font-style: italic;
+    color: var(--color-text-on-dark);
+}
+
+.about-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+}
+
+.about-portrait {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    max-width: 280px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: var(--radius-sm);
+    border: 1px dashed var(--color-text-on-dark-muted);
+    background: var(--color-surface-dark-3);
+    color: var(--color-text-on-dark-muted);
+}
+
+.about-bio {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+}
+
+.about-bio-placeholder {
+    color: var(--color-text-on-dark);
+}
+
+.about-facts {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.about-fact {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding-bottom: var(--space-3);
+    border-bottom: var(--border-hairline);
+    opacity: 0.7;
+}
+
+.about-fact-key {
+    color: var(--color-text-on-dark-faint);
+}
+
+.about-fact-value {
+    color: var(--color-text-on-dark-muted);
+    font-style: italic;
+}
+
+
+/* =============================================================================
+   CONTACTS
+   ---------------------------------------------------------------------------
+   No corresponding section exists in the Figma file at all. Styled with the
+   same tokens as ABOUT/PROJECT LIST so it reads as part of the same system
+   the moment real links replace the placeholders.
+============================================================================= */
+.contacts-section {
+    width: 100%;
+    min-height: 60vh;
+    padding: var(--space-8) var(--space-4);
+    background: var(--color-surface-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contacts-inner {
+    width: 100%;
+    max-width: 600px;
+}
+
+.contacts-section .eyebrow {
+    color: var(--color-text-on-dark-faint);
+    margin-bottom: var(--space-3);
+}
+
+.contacts-title {
+    color: var(--color-surface-light-2);
+    margin-bottom: var(--space-4);
+}
+
+.contacts-title em {
+    font-style: italic;
+    color: var(--color-text-on-dark);
+}
+
+.contacts-intro {
+    color: var(--color-text-on-dark);
+    margin-bottom: var(--space-7);
+    max-width: 40ch;
+}
+
+.contacts-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.contacts-link {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-3);
+    min-height: 44px;
+    color: var(--color-text-on-dark);
+    transition: color var(--duration-fast) ease;
+}
+
+.contacts-link:hover,
+.contacts-link:focus-visible {
+    color: var(--color-accent-gold-hover);
+}
+
+.contacts-link:focus-visible {
+    outline: var(--border-focus);
+    outline-offset: 4px;
+}
+
+.contacts-link-key {
+    color: var(--color-text-on-dark-faint);
+    min-width: 7ch;
+}
+
+
+/* =============================================================================
+   PROJECT LIST PAGES (art-projects.html / web-projects.html)
+============================================================================= */
+body.art-page {
+    background-image: radial-gradient(
+        ellipse at 50% 0%,
+        var(--color-surface-dark-3) 0%,
+        var(--color-surface-dark-2) 45%,
+        var(--color-surface-dark) 75%
+    );
+}
+
+.art-section {
+    padding-top: calc(var(--nav-h) + var(--space-6));
+    padding-bottom: var(--space-7);
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+    min-height: 100vh;
+}
+
+.art-section-inner {
+    width: 100%;
+    max-width: var(--content-max-width);
+}
+
+.back-link {
+    gap: 9px;
+    min-height: 44px;
+    color: var(--color-text-on-dark-muted);
+    margin-bottom: var(--space-6);
+    transition: color var(--duration-fast) ease;
+}
+
+.back-link:hover,
+.back-link:focus-visible {
+    color: var(--color-text-on-dark);
+}
+
+.back-icon {
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--color-text-on-dark-muted);
+    border-radius: var(--radius-circle);
+    color: var(--color-text-on-dark-muted);
+    font-size: 1.1rem;
+    line-height: 1;
+    transition: border-color var(--duration-fast) ease, color var(--duration-fast) ease;
+}
+
+.back-link:hover .back-icon,
+.back-link:focus-visible .back-icon {
+    border-color: var(--color-text-on-dark);
+    color: var(--color-text-on-dark);
+}
+
+.art-heading {
+    gap: var(--space-4);
+    margin-bottom: var(--space-7);
+}
+
+.eyebrow {
+    color: var(--color-text-on-dark-faint);
+}
+
+.art-title {
+    color: var(--color-surface-light-2);
+}
+
+.art-intro {
+    color: var(--color-text-on-dark);
+}
+
+.art-divider {
+    height: 1px;
+    background-color: var(--color-text-on-dark-muted);
+    opacity: 0.4;
+    margin-top: var(--space-4);
+}
+
+.project-list {
+    gap: var(--space-8);
+}
+
+.project-preview {
+    gap: var(--space-4);
+    color: inherit;
+}
+
+.project-description {
+    gap: var(--space-2);
+}
+
+.art-top {
+    gap: var(--space-2);
+}
+
+.project-image img {
+    border-radius: var(--radius-sm);
+    display: block;
+}
+
+.project-image--placeholder {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    border: 1px dashed var(--color-text-on-dark-muted);
+    background: var(--color-surface-dark-3);
+    color: var(--color-text-on-dark-muted);
+}
+
+.project-number {
+    color: var(--color-text-on-dark-faint);
+}
+
+.project-title {
+    color: var(--color-surface-light-2);
+}
+
+.project-desc {
+    color: var(--color-text-on-dark-muted);
+}
+
+.project-tags {
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    border: var(--border-hairline);
+    border-radius: var(--radius-pill);
+    padding: 0.4rem 0.75rem;
+    color: var(--color-text-on-dark-muted);
+}
+
+.view-project {
+    gap: 4px;
+    min-height: 44px;
+    color: var(--color-accent-gold);
+    transition: color var(--duration-fast) ease;
+}
+
+.project-preview:hover .view-project,
+.project-preview:focus-visible .view-project {
+    color: var(--color-accent-gold-hover);
+}
+
+.project-preview:focus-visible {
+    outline: var(--border-focus);
+    outline-offset: 4px;
+    border-radius: var(--radius-sm);
+}
+
+
+/* =============================================================================
+   RESPONSIVE
+   ---------------------------------------------------------------------------
+   Mobile-first base styles above already match the 375px Figma frames.
+   These queries scale UP from there — tablet/desktop get more breathing
+   room and a horizontal planet layout; nothing here is a mobile patch.
+============================================================================= */
+
+/* Mobile nav (base / mobile-first): collapsed behind a hamburger.
+   See the "MAIN NAVIGATION" comment above for why this collapse exists
+   even though the Figma file itself never shows the menu closed. */
+.nav-toggle {
+    display: flex;
+}
+
+.nav-list {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: min(78vw, 300px);
+    padding: calc(var(--space-7) + 44px) var(--space-5) var(--space-5);
+    background: var(--color-surface-dark);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+    transform: translateX(100%);
+    transition: transform var(--duration-standard) var(--ease-standard);
+    overflow-y: auto;
+    z-index: var(--z-nav-overlay);
+}
+
+.nav-list .nav-link {
+    width: 100%;
+    color: var(--color-text-on-dark-muted);
+}
+
+.nav-list .nav-link.active {
+    color: var(--color-text-on-dark-light);
+}
+
+body.nav-open .nav-list {
+    transform: translateX(0);
+}
+
+/* Scrim: full-viewport backdrop behind the open panel. A <button> (not a
+   plain div) so it's keyboard/AT reachable and dismissible like any other
+   overlay control, without needing a separate click handler vs keypress handler. */
+body.nav-open .nav-scrim {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(8, 8, 15, 0.6);
+    border: none;
+    cursor: default;
+    z-index: calc(var(--z-nav-overlay) - 1);
+}
+
+body.nav-open {
+    overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .nav-list {
+        transition: none;
+    }
+}
+
+/* Desktop nav: list becomes the plain horizontal row from the Figma
+   "Menu, Property 1=Desktop" component; hamburger/panel/scrim all retire. */
+@media (min-width: 640px) {
+    .nav-toggle {
+        display: none;
+    }
+
+    .nav-scrim {
+        display: none !important;
+    }
+
+    .nav-list {
+        position: static;
+        height: auto;
+        width: auto;
+        padding: 0;
+        background: transparent;
+        flex-direction: row;
+        align-items: center;
+        transform: none;
+        overflow: visible;
+    }
+
+    .nav-list .nav-link {
+        width: auto;
+        color: var(--color-text-on-light-muted);
+    }
+
+    .nav-list .nav-link.active {
+        color: var(--color-text-on-light);
+    }
+
+    header.dark .nav-list .nav-link {
+        color: var(--color-text-on-dark-muted);
+    }
+
+    header.dark .nav-list .nav-link.active {
+        color: var(--color-text-on-dark-light);
+    }
+
+    body.nav-open {
+        overflow: visible;
+    }
+}
+
+/* Very small phones — Figma's frames assume ~375px; anything narrower
+   nudges the decorative star in from the hero's edge so it never crowds
+   the title. */
+@media (max-width: 374.98px) {
+    .hero-star {
+        transform: translateX(calc(-50% - 60px));
+    }
+}
+
+/* Tablet and up — open up the planets into a wider diagonal and give the
+   cosmos title more breathing room. */
+@media (min-width: 600px) {
+    .planets-row {
+        grid-template-columns: 1fr 1fr;
+        column-gap: var(--space-6);
+    }
+
+    .planet-card--art {
+        grid-column: 1;
+    }
+
+    .planet-card--wd {
+        grid-column: 2;
+        margin-top: var(--space-8);
+    }
+}
+
+@media (min-width: 768px) {
+    .planet-sphere {
+        width: 220px;
+        height: 220px;
+    }
+
+    .cosmos-content {
+        max-width: 900px;
+    }
+
+    .about-body {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: var(--space-8);
+    }
+
+    .about-portrait {
+        flex-shrink: 0;
+        width: 280px;
+        margin: 0;
+    }
+
+    .about-bio {
+        flex: 1;
+    }
+}
