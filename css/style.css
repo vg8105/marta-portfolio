@@ -903,20 +903,26 @@ body.art-page {
     gap: var(--space-2);
 }
 
-.project-image img {
+.project-image {
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
     border-radius: var(--radius-sm);
-    display: block;
+    background: var(--color-surface-dark-2);
 }
 
-.project-image--placeholder {
-    aspect-ratio: 1 / 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: var(--radius-sm);
-    border: 1px dashed var(--color-text-on-dark-muted);
-    background: var(--color-surface-dark-3);
-    color: var(--color-text-on-dark-muted);
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    transition: transform var(--duration-standard) var(--ease-standard);
+}
+
+@media (hover: hover) {
+    .project-preview:hover .project-image img {
+        transform: scale(1.03);
+    }
 }
 
 .project-number {

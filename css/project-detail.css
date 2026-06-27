@@ -100,7 +100,7 @@
 .project-hero-image--device {
     aspect-ratio: 343 / 343;
     background: var(--color-surface-dark-2);
-    padding: var(--space-6);
+    padding: var(--space-5);
 }
 
 .project-hero-image--device img {
@@ -156,19 +156,20 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: var(--space-2);
+    gap: var(--space-3);
 }
 
 .project-section-label {
     color: var(--color-accent-gold-dim);
+    margin-bottom: var(--space-1);
 }
 
 .project-section-body {
     color: var(--color-text-on-dark);
 }
 
-.project-section-body p + p {
-    margin-top: var(--space-4);
+.project-section-body + .project-section-body {
+    margin-top: var(--space-3);
 }
 
 .project-pullquote {
@@ -176,11 +177,15 @@
     font-weight: 400;
     font-style: italic;
     font-size: var(--text-h5);
-    line-height: 1.15;
+    line-height: 1.3;
     color: var(--color-text-on-dark);
+    padding: var(--space-3) 0;
+    border-left: 2px solid var(--color-accent-gold-dim);
+    padding-left: var(--space-4);
 }
 
 .project-pullquote em {
+    color: var(--color-accent-gold);
     font-style: italic;
 }
 
@@ -424,7 +429,7 @@
 }
 
 .project-figure--spaced {
-    margin-top: var(--space-4);
+    margin-top: var(--space-5);
 }
 
 
