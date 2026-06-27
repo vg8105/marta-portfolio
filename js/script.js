@@ -202,11 +202,11 @@ ScrollTrigger.create({
     start: () => 'top+=' + (scrollDriver.offsetHeight * 0.70) + ' top',
     end: 'bottom top',
     onEnter: () => {
-        header.classList.add('dark');
+        if (header) header.classList.add('dark');
         updateActiveNav('projects');
     },
     onLeaveBack: () => {
-        header.classList.remove('dark');
+        if (header) header.classList.remove('dark');
         updateActiveNav('home');
     },
 });

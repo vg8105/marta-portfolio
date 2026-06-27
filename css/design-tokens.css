@@ -69,6 +69,8 @@
     --color-accent-gold:          var(--color-gold);
     --color-accent-gold-hover:    var(--color-gold-bright);
     --color-accent-gold-dim:      var(--color-gold-dim);
+    --color-gold-bright-a50:      rgba(244, 231, 196, 0.5);   /* outcome card border */
+    --color-gold-a10:             rgba(231, 211, 161, 0.10);  /* outcome card gradient fill */
     --color-accent-purple:        var(--color-purple);
     --color-accent-purple-glow:   var(--color-purple-glow);
 

@@ -351,8 +351,8 @@
     width: 100%;
     padding: var(--space-4);
     border-radius: var(--radius-sm);
-    border: 1px solid rgba(244, 231, 196, 0.5);
-    background: linear-gradient(to bottom, rgba(231, 211, 161, 0.1), rgba(0, 0, 0, 0));
+    border: 1px solid var(--color-gold-bright-a50);
+    background: linear-gradient(to bottom, var(--color-gold-a10), transparent);
     display: flex;
     flex-direction: column;
     gap: var(--space-2);
@@ -446,6 +446,7 @@
 .reveal.is-visible {
     opacity: 1;
     transform: translateY(0);
+    will-change: auto;
 }
 
 @media (prefers-reduced-motion: reduce) {

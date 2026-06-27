@@ -14,7 +14,12 @@
     }
 
     setNavOffset();
-    window.addEventListener('resize', setNavOffset);
+
+    let resizeRAF = null;
+    window.addEventListener('resize', () => {
+        if (resizeRAF) cancelAnimationFrame(resizeRAF);
+        resizeRAF = requestAnimationFrame(setNavOffset);
+    });
 
     if (document.fonts && document.fonts.ready) {
         document.fonts.ready.then(setNavOffset);
