@@ -257,9 +257,13 @@ gsap.from('.planet-card', {
     ease: 'power2.out',
     duration: 0.6,
     stagger: 0.15,
+    // immediateRender:false keeps planets at their natural CSS state (visible)
+    // until the trigger fires — without it, GSAP hides them on page load and
+    // they stay invisible if the trigger never fires (e.g. hero still in view).
+    immediateRender: false,
     scrollTrigger: {
         trigger: '.planets-row',
         start: 'top 85%',
-        toggleActions: 'play none none reverse',
+        toggleActions: 'play none none none',
     },
 });
