@@ -1134,3 +1134,97 @@ body.nav-open {
         flex: 1;
     }
 }
+
+
+/* =============================================================================
+   LISTING PAGES — responsive scaling
+   Base is mobile-first at 343px (Figma mobile). From 640px up the content
+   column widens and the project list shifts to a multi-column grid so the
+   listing pages feel as designed on any screen — not a phone column centered
+   in a large viewport.
+============================================================================= */
+@media (min-width: 640px) {
+    .art-section {
+        padding-left: var(--space-6);
+        padding-right: var(--space-6);
+        padding-top: calc(var(--nav-h) + var(--space-7));
+    }
+
+    .art-section-inner {
+        max-width: 680px;
+    }
+
+    .art-top {
+        gap: var(--space-4);
+    }
+
+    /* Prevent the "PLANET N — …" eyebrow from wrapping on wider screens */
+    .eyebrow {
+        white-space: nowrap;
+    }
+
+    .art-title {
+        font-size: clamp(2.75rem, 6vw, 4.5rem);
+    }
+}
+
+@media (min-width: 900px) {
+    .art-section {
+        padding-left: var(--space-8);
+        padding-right: var(--space-8);
+    }
+
+    .art-section-inner {
+        max-width: 900px;
+    }
+
+    /* Heading row: heading left, back-link pushed to far right */
+    .art-top {
+        flex-direction: row;
+        align-items: flex-start !important; /* override align-items-end utility */
+        justify-content: space-between;
+        gap: var(--space-6);
+        margin-bottom: var(--space-6);
+    }
+
+    .art-heading {
+        flex: 1;
+        gap: var(--space-3);
+        margin-bottom: 0;
+    }
+
+    .back-link {
+        margin-bottom: 0;
+        flex-shrink: 0;
+        order: 2;
+    }
+
+    /* 2-column project grid */
+    .project-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-8) var(--space-6);
+        align-items: start;
+    }
+
+    /* Prevent VIEW PROJECT from taking full grid-column width */
+    .project-preview {
+        flex: none;
+    }
+}
+
+@media (min-width: 1200px) {
+    .art-section-inner {
+        max-width: 1140px;
+    }
+
+    /* All 3 projects in a single row */
+    .project-list {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-7);
+    }
+
+    .art-title {
+        font-size: clamp(3rem, 4vw, 4.5rem);
+    }
+}

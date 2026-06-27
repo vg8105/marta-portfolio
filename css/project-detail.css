@@ -470,6 +470,17 @@
    case studies move toward a two-column reading layout so the page reads
    like an article rather than a single stretched mobile column.
 ============================================================================= */
+@media (min-width: 640px) {
+    .project-main {
+        padding-left: var(--space-6);
+        padding-right: var(--space-6);
+    }
+
+    .project-content {
+        max-width: 580px;
+    }
+}
+
 @media (min-width: 768px) {
     .project-main {
         padding-left: var(--space-8);
@@ -495,7 +506,7 @@
 
 @media (min-width: 1024px) {
     .project-content {
-        max-width: 880px;
+        max-width: 960px;
     }
 
     .project-body {
@@ -504,13 +515,17 @@
 
     .project-hero {
         display: grid;
-        grid-template-columns: 1.1fr 1fr;
+        grid-template-columns: 1.15fr 1fr;
         gap: var(--space-7);
         align-items: start;
     }
 
     .project-hero-image {
         aspect-ratio: 1 / 1;
+    }
+
+    .project-number {
+        grid-column: 1 / -1;
     }
 
     .project-title-block {
@@ -522,11 +537,34 @@
         grid-template-columns: 1fr 1fr;
     }
 
-    .project-section-body {
+    /* Constrain text width for readability (~65 chars/line) but let
+       figures and carousels stay full-column width */
+    .project-section-body,
+    .project-pullquote,
+    .project-process-steps {
         max-width: 640px;
     }
 
     .project-figure-pair img {
         aspect-ratio: 166 / 240;
+    }
+
+    .project-outcome {
+        max-width: 720px;
+    }
+
+    .project-reflection {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .project-content {
+        max-width: 1100px;
+    }
+
+    .project-hero {
+        grid-template-columns: 1.3fr 1fr;
+        gap: var(--space-8);
     }
 }
