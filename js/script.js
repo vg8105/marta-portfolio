@@ -63,6 +63,22 @@ function updateActiveNav(section) {
 })();
 
 /* =============================================================================
+   SCROLL CUE — the "SCROLL" hint is a real <button> (see HTML/CSS); clicking
+   or pressing it scrolls down to the cosmos section, matching what people
+   expect when something is shaped like a button.
+============================================================================= */
+(function setupScrollCue() {
+    const cue = document.getElementById('scrollCue');
+    const cosmos = document.getElementById('cosmos');
+    if (!cue || !cosmos) return;
+
+    cue.addEventListener('click', () => {
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        cosmos.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+    });
+})();
+
+/* =============================================================================
    STARFIELD — decorative, generated once on load
 ============================================================================= */
 (function createStars() {

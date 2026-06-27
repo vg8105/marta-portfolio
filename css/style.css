@@ -425,6 +425,26 @@ header.dark .nav-toggle-bar {
     bottom: calc(30vw + var(--space-7));
     color: var(--color-text-on-light);
     z-index: var(--z-content);
+    /* Reset native <button> chrome — visually this is still just the
+       label + line from the design, now wrapped in a real button so it's
+       actually clickable/keyboard-operable instead of a decorative div. */
+    background: none;
+    border: none;
+    padding: var(--space-2);
+    min-height: 44px;
+    cursor: pointer;
+    font: inherit;
+    transition: opacity var(--duration-fast) ease;
+}
+
+.scroll-indicator:hover,
+.scroll-indicator:focus-visible {
+    opacity: 0.7;
+}
+
+.scroll-indicator:focus-visible {
+    outline: var(--border-focus);
+    outline-offset: 4px;
 }
 
 .scroll-line {
@@ -451,8 +471,7 @@ header.dark .nav-toggle-bar {
 ============================================================================= */
 .cosmos-section {
     width: 100%;
-    height: 100vh;
-    overflow: hidden;
+    min-height: 100vh;
 }
 
 .stars-layer {
